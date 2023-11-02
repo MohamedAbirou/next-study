@@ -1,1 +1,0 @@
-web: gunicorn nextstudy.wsgi --log-file -
