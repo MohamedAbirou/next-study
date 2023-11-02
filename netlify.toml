@@ -1,3 +1,0 @@
-[build]
-  command = "python manage.py collectstatic --noinput"
-  publish = "nextstudy/static"  # Adjust the path accordingly
