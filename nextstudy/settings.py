@@ -23,16 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
+# DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-# SECRET_KEY = "6fab1392d6a33371fecefd2dee93b861"
-# DEBUG = False
-# ALLOWED_HOSTS = ['*']
+SECRET_KEY = "6fab1392d6a33371fecefd2dee93b861"
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -104,9 +104,9 @@ DATABASES = {
     }
 }
 
-database_url = os.environ.get("DATABASE_URL")
+# database_url = os.environ.get("DATABASE_URL")
 
-DATABASES["default"] = dj_database_url.parse(database_url)
+# DATABASES["default"] = dj_database_url.parse(database_url)
 
 
 # Password validation
@@ -151,7 +151,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-MEDIA_URL = '/images/'
+MEDIA_URL = '/static/images/'
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
 
