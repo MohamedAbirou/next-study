@@ -32,7 +32,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # SECRET_KEY = "6fab1392d6a33371fecefd2dee93b861"
 # DEBUG = False
-# ALLOWED_HOSTS = ['next-study.onrender.com']
+# ALLOWED_HOSTS = ['*']
 
 
 # Application definition
