@@ -115,17 +115,35 @@ def delete_message(request, pk):
 
 @login_required(login_url='login')
 def userProfile(request, pk):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
     user = CustomUser.objects.get(id=pk)
-    rooms = user.room_set.all()
-    activities = user.message_set.all()[:3]
-    topics = Topic.objects.all()[:5]
+    # Filter rooms hosted by the user
+    rooms_hosted = user.room_set.filter(
+        Q(topic__name__icontains=q) | Q(name__icontains=q)
+    )
+    
+    # Filter rooms in which the user participates, excluding rooms hosted by the user
+    rooms_participating = Room.objects.filter(
+        Q(participants=user) &
+        (Q(topic__name__icontains=q) | Q(name__icontains=q))
+    )
+    
+    activities = user.message_set.all().order_by('-created')
+    topics = Topic.objects.all()
     user_rooms_per_topic = {topic.name: topic.room_set.filter(host=user).count() for topic in topics}
     total_rooms = sum(user_rooms_per_topic.values())
 
-    context = {'user': user, 'rooms': rooms,
-               'activities': activities, 'topics': topics, "total_rooms": total_rooms, "user_rooms_per_topic": user_rooms_per_topic}
+    context = {
+        'user': user,
+        'rooms_hosted': rooms_hosted,  # Rooms hosted by the user
+        'rooms_participating': rooms_participating,  # Rooms in which the user participates
+        'activities': activities,
+        'topics': topics,
+        'total_rooms': total_rooms,
+        'user_rooms_per_topic': user_rooms_per_topic
+    }
+    
     return render(request, 'base/profile.html', context)
-
 
 @login_required(login_url='login')
 def createRoom(request):

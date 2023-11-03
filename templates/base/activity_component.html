@@ -1,3 +1,6 @@
+{% load static %}
+
+  
   <div class="activities__header">
     <h2>Recent Activities</h2>
   </div>
@@ -6,7 +9,11 @@
     <div class="activities__boxHeader roomListRoom__header">
       <a href="{% url 'user-profile' activity.user.id %}" class="roomListRoom__author">
         <div class="avatar avatar--small">
-          <img src="{{ activity.user.avatar.url }}" />
+          {% if activity.user.avatar %}
+            <img src="{{ activity.user.avatar.url }}" />
+          {% else %}
+            <img src="{% static 'images/avatar.svg' %}" />
+          {% endif %}
         </div>
         <p>
           @{{ activity.user.username }}

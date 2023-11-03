@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <header class="header header--loggedIn">
     <div class="container">
       <a href="{% url 'home' %}" class="header__logo">
@@ -24,7 +25,11 @@
         <div class="header__user">
           <a href="{% url 'user-profile' request.user.id %}">
             <div class="avatar avatar--medium active">
-              <img src="{{ request.user.avatar.url }}" />
+              {% if request.user.avatar %}
+                <img src="{{ request.user.avatar.url }}" />
+              {% else %}
+                <img src="{% static 'images/avatar.svg' %}" />
+              {% endif %}
             </div>
             <p>{{ request.user.name }} <span>@{{ request.user.username }}</span></p>
           </a>

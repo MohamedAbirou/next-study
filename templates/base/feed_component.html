@@ -1,11 +1,17 @@
+{% load static %}
 {% load templatetags %}
+
 
 {% for room in rooms %}
 <div class="roomListRoom">
     <div class="roomListRoom__header">
             <a href="{% url 'user-profile' room.host.id %}" class="roomListRoom__author">
                 <div class="avatar avatar--small">
-                    <img src="{{ room.host.avatar.url }}" />
+                    {% if room.host.avatar %}
+                        <img src="{{ room.host.avatar.url }}" />
+                    {% else %}
+                        <img src="{% static 'images/avatar.svg' %}" />
+                    {% endif %}
                 </div>
                 <span>@{{ room.host.username }}</span>
             </a>
