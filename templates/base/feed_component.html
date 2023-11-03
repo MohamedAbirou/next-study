@@ -1,7 +1,7 @@
 {% load static %}
 {% load templatetags %}
 
-
+{% if rooms.count > 0 %}
 {% for room in rooms %}
 <div class="roomListRoom">
     <div class="roomListRoom__header">
@@ -45,3 +45,6 @@
     </div>
 </div>
 {% endfor %}
+{% else %}
+    <h3 style="text-align: center;">No Rooms Available.</h3>
+{% endif %}

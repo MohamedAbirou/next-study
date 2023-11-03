@@ -4,6 +4,7 @@
   <div class="activities__header">
     <h2>Recent Activities</h2>
   </div>
+  {% if recent_activities.count > 0 %}
   {% for activity in recent_activities %}
   <div class="activities__box">
     <div class="activities__boxHeader roomListRoom__header">
@@ -49,6 +50,9 @@
     </div>
   </div>
   {% endfor %}
+  {% else %}
+    <h3 style="text-align: center;">No Activities Available.</h3>
+  {% endif %}
 
 
 <script>

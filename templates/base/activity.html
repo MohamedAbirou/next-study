@@ -20,7 +20,7 @@
           </div>
 
           <div class="activities-page layout__body">
-
+            {% if activities.count > 0 %}
             {% for activity in activities %}
             <div class="activities__box">
               <div class="activities__boxHeader roomListRoom__header">
@@ -62,6 +62,9 @@
               </div>
             </div>
             {% endfor %}
+            {% else %}
+              <h3 style="text-align: center;">No Activities Available.</h3>
+            {% endif %}
 
           </div>
         </div>
