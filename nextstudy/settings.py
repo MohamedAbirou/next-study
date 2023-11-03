@@ -30,6 +30,10 @@ DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
+# SECRET_KEY = "6fab1392d6a33371fecefd2dee93b861"
+# DEBUG = True
+# ALLOWED_HOSTS = []
+
 
 # Application definition
 
