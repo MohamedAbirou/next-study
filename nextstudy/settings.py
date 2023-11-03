@@ -13,9 +13,6 @@ import os
 import dj_database_url
 from pathlib import Path
 
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,6 +57,7 @@ AUTH_USER_MODEL = 'base.CustomUser'
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
