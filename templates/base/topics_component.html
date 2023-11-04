@@ -6,16 +6,13 @@
     <li>
       <a href="{% url 'home' %}" class="active">All <span>{{ total_rooms }}</span></a>
     </li>
-    {% if topics.count > 0 %}
+  {% if topics.count > 0 %}
     {% for topic in topics %}
     <li>
       <a href="{% url 'home' %}?q={{ topic.name }}">{{ topic.name }} <span>{{ topic.room_set.all.count }}</span></a>
     </li>
     {% endfor %}
-    {% else %}
-      <h3 style="text-align: center;">No Topics Available.</h3>
-    {% endif %}
-
+    
   </ul>
   <a class="btn btn--link" href="{% url 'topics' %}">
     More
@@ -24,4 +21,7 @@
       <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
     </svg>
   </a>
+  {% else %}
+    <h3 style="text-align: center;">No Topics Available.</h3>
+  {% endif %}
 </div>
